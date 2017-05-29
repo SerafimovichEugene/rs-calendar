@@ -1,4 +1,4 @@
-export default class calendarInterface {
+export default class calendarDataProvider {
     constructor() {
         this.daysOfWeek = [
             'Sunday',
@@ -39,12 +39,11 @@ export default class calendarInterface {
         console.log('day', this.currentDate);
 
         console.log('days in month', this.daysInMonth(this.currentYear, this.currentMonth));
-
-        console.log(this.getCalendarData(this.currentYear, 0, this.daysInMonth(this.currentYear, 1)));
+        console.log(this.getCalendarData(this.currentYear, 0));
     }
 
-    getCalendarData(year, month, daysInMonth) {
-        console.log(this.months[month]);
+    getCalendarData(year, month) {
+        const daysInMonth = this.daysInMonth(year, month);
         let calendarDataArray = [];
         for(let i = 1; i <= daysInMonth; i++){
             const tempDate = new Date(year, month, i);
@@ -77,8 +76,6 @@ export default class calendarInterface {
         }
         return calendarDataArray;
     }
-
-    getNextMonth() {}
 
     daysInMonth(year, month) {
         return new Date(year, month + 1, 0).getDate();

@@ -1,8 +1,13 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import cal from './core/calendarInterface';
+import App from './components/App';
+import calendarDataProvider from './core/calendarDataProvider';
 
-let calendar = new cal();
+let calendar = new calendarDataProvider();
 calendar.log();
 
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+); 
