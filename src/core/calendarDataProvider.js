@@ -1,13 +1,13 @@
 export default class calendarDataProvider {
     constructor() {
         this.daysOfWeek = [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday'
+            'Mon',
+            'Tue',
+            'Wed',
+            'Thu',
+            'Fri',
+            'Sat',
+            'Sun'
         ];
         this.months = [
             'Jan',
@@ -33,13 +33,13 @@ export default class calendarDataProvider {
     }
 
     log() {
-        console.log('month', this.currentMonth);
-        console.log('year', this.currentYear);
-        console.log('day of week', this.currentDayOfWeek);
-        console.log('day', this.currentDate);
+        // console.log('month', this.currentMonth);
+        // console.log('year', this.currentYear);
+        // console.log('day of week', this.currentDayOfWeek);
+        // console.log('day', this.currentDate);
 
-        console.log('days in month', this.daysInMonth(this.currentYear, this.currentMonth));
-        console.log(this.getCalendarData(this.currentYear, 0));
+        // console.log('days in month', this.daysInMonth(this.currentYear, this.currentMonth));
+        // console.log(this.getCalendarData(this.currentYear, 1));
     }
 
     getCalendarData(year, month) {

@@ -7,11 +7,11 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
     }
-    render() {
-        console.log('render App');
+    render() {        
         return (
             <div className="container">
                 <Navigation />
+                <Calendar />
             </div>
         )
     }

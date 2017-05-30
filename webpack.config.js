@@ -66,7 +66,6 @@ module.exports = {
                     use: 'css-loader!postcss-loader!sass-loader',
                 })
             },
-
             {
                 test: /\.(woff2?)$/,
                 use: 'url-loader?limit=10000&name=fonts/[name].[ext]'

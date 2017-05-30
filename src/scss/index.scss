@@ -1,18 +1,33 @@
-
 body {
     font-family: sans-serif;
     background-color: lightblue;
+    box-sizing: border-box;
+    white-space: -0.125em;
 }
 
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
 
 #navigation {
-    height: 200px;
+    height: 50px;
     border: 1px solid black;
     background-color: lightcoral;
+    
+    .changeMonth {
+        float: right;
+    }
 }
 
 .calendarCell {
-
+    float: left;
+    width: 14.2857%;
     height: 50px;
     border: 1px solid black;
     border-radius: 3px;
