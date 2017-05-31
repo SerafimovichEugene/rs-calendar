@@ -1,5 +1,22 @@
-import {createAction} from 'redux-actions';
+let monthId = 0;
 
-export const prevMonth = createAction('previous month');
-export const nextMonth = createAction('next month');
-export const selectDate = createAction('select date');
+export const nextMonth = (month) => {
+    return {
+        type: 'NEXT_MONTH',
+        month: month
+    }
+}
+
+export const prevMonth = (month) => {
+    return {
+        type: 'PREV_MONTH',
+        month: month
+    }
+}
+
+export const selectDate = (date) => {
+    return {
+        type: 'SELECT_DATE',
+        date: date
+    }
+}

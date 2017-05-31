@@ -32,15 +32,6 @@ export default class calendarDataProvider {
         this.daysInCurrentMonth = this.daysInMonth(this.currentYear, this.currentMonth);
     }
 
-    log() {
-        // console.log('month', this.currentMonth);
-        // console.log('year', this.currentYear);
-        // console.log('day of week', this.currentDayOfWeek);
-        // console.log('day', this.currentDate);
-
-        // console.log('days in month', this.daysInMonth(this.currentYear, this.currentMonth));
-        // console.log(this.getCalendarData(this.currentYear, 1));
-    }
 
     getCalendarData(year, month) {
         const daysInMonth = this.daysInMonth(year, month);
