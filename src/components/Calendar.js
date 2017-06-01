@@ -1,29 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
+import { nextMonth, prevMonth, selectDate} from '../actions';
 import CalendarWeekDays from './CalendarWeekDays';
 import CalendarRow from './CalendarRow';
 
-import DataProvider from '../core/calendarDataProvider'; 
-import  { chunk } from 'lodash';
-
-
 export default class Calendar extends React.Component {
 
-    render() {
-        const dataProvider = new DataProvider();
-        let devider;
-        const monthDates = dataProvider.getCalendarData(dataProvider.currentYear, dataProvider.currentMonth);
-        const weeks = chunk(monthDates, 7);
-        
+    render() {        
+        const weeks = this.props.calendar.currentDataMatrix;
         let i = 0;
         const CalendarRows = weeks.map(week => (
             <CalendarRow week={week} key={i++}/>
-        ));
-        
+        )); 
+
         return (
             <div className='container'>
-                 <CalendarWeekDays daysOfWeek={dataProvider.daysOfWeek}/>
-                 {CalendarRows}
+                 {CalendarRows}            
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class Button extends React.Component {
-     
+
     float(key) {
         if (key == 'changeMonth') {
             return 'btn btn-default changeMonth';
@@ -11,12 +11,15 @@ export default class Button extends React.Component {
     }
 
     render() {
-
         return (
-            <button className={this.float(this.props.id)}>
+            <button
+                className={this.float(this.props.id)}
+                onClick={() => {                    
+                    this.props.onChangePage('asdf')}
+            }>
                 {this.props.name}
             </button>
         )
-        
+
     }
 }

@@ -32,6 +32,9 @@ export default class calendarDataProvider {
         this.daysInCurrentMonth = this.daysInMonth(this.currentYear, this.currentMonth);
     }
 
+    daysInMonth(year, month) {
+        return new Date(year, month + 1, 0).getDate();
+    }
 
     getCalendarData(year, month) {
         const daysInMonth = this.daysInMonth(year, month);
@@ -66,13 +69,7 @@ export default class calendarDataProvider {
             calendarDataArray.push({date: date++, day: 0});
         }
         return calendarDataArray;
-    }
-
-    daysInMonth(year, month) {
-        return new Date(year, month + 1, 0).getDate();
-    }
-
-
+    } 
 }
 
 
