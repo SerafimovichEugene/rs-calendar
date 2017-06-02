@@ -20,3 +20,15 @@ export const selectDate = (date) => {
         date: date
     }
 }
+
+export const today = () => {
+    return {
+        type: 'TODAY'
+    }
+}
+
+export const week = () => {
+    return {
+        type: 'WEEK'
+    }
+}

@@ -20,7 +20,6 @@ function createCalendar(year, month) {
 }
 
 const calendar_reducer = (state = initialCalendar, action) => {
-    // console.log('state!', state);
     switch (action.type) {
         case 'NEXT_MONTH':
             {
@@ -49,6 +48,10 @@ const calendar_reducer = (state = initialCalendar, action) => {
                     year = state.calendar.currentYear;
                 }
                 return createCalendar(year, month);
+            }
+        case 'TODAY':
+            {
+                return createCalendar(state.calendar.todayYear, state.calendar.todayMonth);
             }
         case 'SELECT_DATE':
             console.log('SELECT_DATE');
