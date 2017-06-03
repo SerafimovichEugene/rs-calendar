@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {nextMonth, prevMonth, today, selectDate, week} from '../actions';
 
 import Navigation from './Navigation';
-import Calendar from './Calendar';
+import CalendarMonth from './CalendarMonth';
+import CalendarWeekDays from './CalendarWeekDays';
 
 class App extends React.Component {
     render() {
@@ -17,7 +18,8 @@ class App extends React.Component {
                     onSelectDate={this.props.onSelectDate}
                     currentMonthName={this.props.calendar.currentMonthName}
                     currentYear={this.props.calendar.currentYear}/>
-                <Calendar calendar={this.props.calendar}/>
+                <CalendarWeekDays daysOfWeek={this.props.calendar.daysOfWeek}/>
+                <CalendarMonth calendar={this.props.calendar}/>
             </div>
         )
     }

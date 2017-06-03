@@ -1,12 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
-
-import { nextMonth, prevMonth, selectDate} from '../actions';
-import CalendarWeekDays from './CalendarWeekDays';
 import CalendarRow from './CalendarRow';
 
-export default class Calendar extends React.Component {
-
+export default class CalendarMonth extends React.Component {
     render() {        
         const weeks = this.props.calendar.currentDataMatrix;
         let i = 0;
@@ -15,7 +10,7 @@ export default class Calendar extends React.Component {
         )); 
 
         return (
-            <div className='container'>
+            <div className='container' id='calendar-month'>
                  {CalendarRows}            
             </div>
         )

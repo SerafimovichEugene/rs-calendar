@@ -14,7 +14,8 @@ function createCalendar(year, month) {
             currentDataMatrix: dataMatrix,
             today: dataProvider.currentDate,
             todayMonth: dataProvider.currentMonth,
-            todayYear: dataProvider.currentYear
+            todayYear: dataProvider.currentYear,
+            daysOfWeek: dataProvider.daysOfWeek
         }
     }
 }
@@ -52,6 +53,10 @@ const calendar_reducer = (state = initialCalendar, action) => {
         case 'TODAY':
             {
                 return createCalendar(state.calendar.todayYear, state.calendar.todayMonth);
+            }
+        case 'WEEK':
+            {
+                
             }
         case 'SELECT_DATE':
             console.log('SELECT_DATE');
