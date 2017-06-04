@@ -14,6 +14,20 @@ export const prevMonth = (month) => {
     }
 }
 
+export const nextWeek = (week) => {
+    return {
+        type: 'NEXT_WEEK',
+        week: week
+    }
+}
+
+export const prevWeek = (week) => {
+    return {
+        type: 'PREV_WEEK',
+        week: week
+    }
+}
+
 export const selectDate = (date) => {
     return {
         type: 'SELECT_DATE',
@@ -21,9 +35,10 @@ export const selectDate = (date) => {
     }
 }
 
-export const today = () => {
+export const today = (view) => {
     return {
-        type: 'TODAY'
+        type: 'TODAY',
+        view: view
     }
 }
 
@@ -32,3 +47,10 @@ export const week = () => {
         type: 'WEEK'
     }
 }
+
+export const month = () => {
+    return {
+        type: 'MONTH'
+    }
+}
+

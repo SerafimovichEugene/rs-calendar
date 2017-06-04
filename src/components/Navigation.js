@@ -6,8 +6,8 @@ export default class Navigation extends React.Component {
     render() {
         return (
             <div className='row' id='navigation'>
-                <Button name="Month" id='view'/>
-                <Button name="Week" id='view'/>
+                <Button name="Month" id='view'onChangePage={this.props.onMonth}/>
+                <Button name="Week" id='view' onChangePage={this.props.onWeek}/>
                 <Button name="Today" id='view' onChangePage={this.props.onToday}/>
 
                 <span id='currentView'>

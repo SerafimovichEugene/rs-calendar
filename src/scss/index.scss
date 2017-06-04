@@ -37,6 +37,32 @@ body {
     border-radius: 3px;
 }
 
+.weekCell {
+    float: left;  
+    width: 14.2857%;  
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
 #calendar-month {
     background-color: lightcyan;
+    #calendar-days {
+        background-color: lightslategray;
+        color: white;
+    }
+}
+
+#calendar-week {
+     background-color: lightblue;
+     #calendar-days {
+        margin-left: 50px;
+        background-color: lightgreen;
+        // color: white;
+    }
+    .time {
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
 }

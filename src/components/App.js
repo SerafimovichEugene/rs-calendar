@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {nextMonth, prevMonth, today, selectDate, week} from '../actions';
+import {nextMonth, prevMonth, nextWeek, prevWeek, today, selectDate, week, month} from '../actions';
 
 import Navigation from './Navigation';
 import CalendarMonth from './CalendarMonth';
-import CalendarWeekDays from './CalendarWeekDays';
+import CalendarWeek from './CalendarWeek';
 
 class App extends React.Component {
     render() {
@@ -15,11 +15,13 @@ class App extends React.Component {
                     onNextMonth={this.props.onNextMonth}
                     onPrevMonth={this.props.onPrevMonth}
                     onToday={this.props.onToday}
+                    onWeek={this.props.onWeek}
+                    onMonth={this.props.onMonth}
                     onSelectDate={this.props.onSelectDate}
                     currentMonthName={this.props.calendar.currentMonthName}
                     currentYear={this.props.calendar.currentYear}/>
-                <CalendarWeekDays daysOfWeek={this.props.calendar.daysOfWeek}/>
                 <CalendarMonth calendar={this.props.calendar}/>
+                <CalendarWeek calendar={this.props.calendar}/>
             </div>
         )
     }
@@ -37,11 +39,20 @@ function mapDispatchToProps(dispatch) {
         onPrevMonth: month => {
             dispatch(prevMonth(month));
         },
+        onNextWeek: week => {
+            dispatch(nextWeek(week));
+        },
+        onPrevWeek: week => {
+            dispatch(prevWeek(week));
+        },
         onToday: () => {
             dispatch(today());
         },
-        week: () => {
+        onWeek: () => {
             dispatch(week());
+        },
+        onMonth: () => {
+            dispatch(month());
         },
         onSelectDate: date => {
             dispatch(selectDate(date));
