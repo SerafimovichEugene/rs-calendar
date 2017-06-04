@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class CalendarRow extends React.Component {
+export default class CalendarMonthRow extends React.Component {
 
     render() {
         const dates = this.props.week.map(dateObj => {

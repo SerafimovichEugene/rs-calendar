@@ -1,36 +1,39 @@
 import React from 'react';
-import CalendarWeekDays from './CalendarWeekDays';
-import CalendarWeekRow from './CalendarWeekRow';
+import CalendarWeekColumn from './CalendarWeekColumn';
 
 
 export default class CalendarWeek extends React.Component {
-    render() {        
-        let times = [];
-
-        for(let i = 7; i<=24; i++) {
-            times.push(
-                <div className='row'>
-                    <div
-                        className='time'
-                        key={[this.props.calendar.currentMonth] + [this.props.calendar.currentYear]}>
-                        {i + '.00 '}
-                    </div>                              
-                </div>
-            );
-        }
-
-        times.forEach((time) => {
-            
-        });
-
-
+    render() {
+        let ColumnId = 0;
+        let columns = [];
+        columns.push(
+            <CalendarWeekColumn
+                    key={ColumnId++}
+                    columnClassName={'col-time'}
+                    itemClass={'time'}
+                    timeColumn={true}
+            />
+        );
+        for(let i = 0; i < 7; i++) {
+            columns.push(
+                <CalendarWeekColumn
+                    key={ColumnId++}
+                    columnClassName={'col-day'}
+                    itemClass={'day'}
+                    day={this.props.calendar.daysOfWeek[i]}
+                    date={this.props.calendar.currentWeekDates[i].date}
+                    month={this.props.calendar.currentWeekDates[i].month}
+                />
+            );           
+        }  
         return (
-            <div className='container' id='calendar-week' style={{display: this.props.calendar.displayWeek ? 'block' : 'none'}}>
-                <CalendarWeekDays 
-                    daysOfWeek={this.props.calendar.daysOfWeek}
-                    dates={this.props.calendar.currentWeekDates}/>
-                {times}    
+            <div className='container' id='calendar-week' style={{display: this.props.calendar.displayWeek ? 'block' : 'none'}}>                               
+                <div className='row'>
+                    {columns}
+                </div>
             </div>
         )
     }
+
+    
 }

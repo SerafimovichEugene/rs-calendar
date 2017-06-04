@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
     background-color: lightblue;
     box-sizing: border-box;
-    white-space: -0.125em;
+    // white-space: -0.125em;
 }
 
 .container {
@@ -20,7 +20,7 @@ body {
     border: 1px solid black;
     background-color: lightcoral;
     
-    .changeMonth {
+    .change {
         float: right;
     }
 
@@ -37,32 +37,50 @@ body {
     border-radius: 3px;
 }
 
-.weekCell {
-    float: left;  
-    width: 14.2857%;  
-    height: 50px;
-    border: 1px solid black;
-    border-radius: 3px;
-}
-
 #calendar-month {
     background-color: lightcyan;
-    #calendar-days {
+    #month-days {
         background-color: lightslategray;
         color: white;
+        .month-day{
+            float: left;
+            width: 14.2857%;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 3px; 
+        }
     }
 }
 
 #calendar-week {
      background-color: lightblue;
-     #calendar-days {
-        margin-left: 50px;
-        background-color: lightgreen;
-        // color: white;
-    }
-    .time {
-        width: 50px;
-        height: 50px;
-        float: left;
+}
+
+.col-time{
+    float: left;
+    display: inline-block;
+    width: 10%;
+    .time{
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 3px;
     }
 }
+
+.col-day {
+    float: left;
+    display: inline-block;
+    width: 12.8574%;
+    .day {
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 3px;
+    }
+    .day:hover {
+        background-color: red;        
+        border: 1px solid black;
+        border-radius: 3px;
+    }
+
+}
+

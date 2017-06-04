@@ -1,6 +1,6 @@
 import React from 'react';
-import CalendarWeekDays from './CalendarWeekDays';
-import CalendarRow from './CalendarRow';
+import CalendarMonthRow from './CalendarMonthRow';
+import CalendarMonthDays from './CalendarMonthDays';
 
 export default class CalendarMonth extends React.Component {
     render() {
@@ -8,7 +8,7 @@ export default class CalendarMonth extends React.Component {
         let i = 0;
         const CalendarRows = weeks.map(week => {            
             return (
-                <CalendarRow
+                <CalendarMonthRow
                     week={week}
                     key={++i + [this.props.calendar.currentMonth] + [this.props.calendar.currentYear]}
                     currentYear={this.props.calendar.currentYear}
@@ -20,7 +20,7 @@ export default class CalendarMonth extends React.Component {
                 className='container'
                 id='calendar-month'
                 style={{display: this.props.calendar.displayMonth ? 'block' : 'none'}}>
-                <CalendarWeekDays daysOfWeek={this.props.calendar.daysOfWeek} key={"wer"}/> 
+                <CalendarMonthDays daysOfWeek={this.props.calendar.daysOfWeek}/> 
                 {CalendarRows}
             </div>
         )

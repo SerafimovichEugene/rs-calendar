@@ -3,8 +3,8 @@ import {chunk} from 'lodash';
 
 const dataProvider = new DataProvider();
 const initialCalendar = createCalendar(dataProvider.currentYear, dataProvider.currentMonth, false, dataProvider.currentWeek);
-
-function createCalendar(year, month, view, week=0) {
+console.log(initialCalendar);
+function createCalendar(year, month, view, week = 0) {
     const dataMatrix = chunk(dataProvider.getCalendarData(year, month), 7); //chunk by weeks in month
     return {
         calendar: {
@@ -23,65 +23,65 @@ function createCalendar(year, month, view, week=0) {
             displayWeek: view,
             displayMonth: !view
         },
-        events: {
-            tasks: {
-                task:[]
-            },
-            lectures: {},
-            webinars: {},
-        }
+        events: [
+            {
+                description: 'lorem lorem lorem',
+                duration: 57970447,
+                id: 'fsdfo34nfi',
+                location: 'Minsk',
+                start: '2017-05-13T07:23:50Z',
+                title: 'rs-calendar',
+                type: 'deadline'
+            }
+        ]
     }
 }
 
 const calendar_reducer = (state = initialCalendar, action) => {
     switch (action.type) {
         case 'NEXT_MONTH':
-            {
-                let month;
-                let year;
-                if (state.calendar.currentMonth == 11) {
-                    year = state.calendar.currentYear + 1;
-                    month = 0;
-                } else {
-                    month = ++state.calendar.currentMonth;
-                    year = state.calendar.currentYear;
-                }
-                return createCalendar(year, month, false);
+            {                
+                const DataForNextMonth = nextMonth(state.calendar.currentMonth, state.calendar.currentYear);
+                return createCalendar(DataForNextMonth.year, DataForNextMonth.month, false);
             }            
         case 'PREV_MONTH':
             {
-                let month;
-                let year;
-                if (state.calendar.currentMonth == 0) {
-                    year = state.calendar.currentYear - 1;
-                    month = 11;
-                } else {
-                    month = --state.calendar.currentMonth;
-                    year = state.calendar.currentYear;
-                }
-                return createCalendar(year, month, false);
+                const DataForPrevMonth = prevMonth(state.calendar.currentMonth, state.calendar.currentYear);
+                return createCalendar(DataForPrevMonth.year, DataForPrevMonth.month, false);
             }
         case 'NEXT_WEEK':
             {
-                
+                let week = state.calendar.currentWeek;
+                let DataForNextMonth = {month: state.calendar.currentMonth, year: state.calendar.currentYear};
+                ++week;                
+                if (week > (state.calendar.weeksInMonth - 1)) {
+                    DataForNextMonth = nextMonth(state.calendar.currentMonth, state.calendar.currentYear);
+                    week = 0;
+                }
+                return createCalendar(DataForNextMonth.year, DataForNextMonth.month, true, week);                
             }
         case 'PREV_WEEK':
             {
-                
+                let week = state.calendar.currentWeek;
+                let DataForNextMonth = {month: state.calendar.currentMonth, year: state.calendar.currentYear};
+                --week;                
+                if (week < 0) {
+                    DataForNextMonth = prevMonth(state.calendar.currentMonth, state.calendar.currentYear);
+                    week = dataProvider.getCalendarData(DataForNextMonth.year, DataForNextMonth.month).length / 7 - 1;
+                }
+                return createCalendar(DataForNextMonth.year, DataForNextMonth.month, true, week);
             }
         case 'TODAY':
             {
                 return createCalendar(state.calendar.todayYear, state.calendar.todayMonth);
             }
         case 'WEEK':
-            {
-                console.log('week view');
+            {                
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, true, state.calendar.currentWeek);
             }
 
         case 'MONTH':
-            {
-                console.log('month view');
+            {                
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
             }
         case 'SELECT_DATE':
@@ -90,5 +90,32 @@ const calendar_reducer = (state = initialCalendar, action) => {
             return state;
     }
 }
+
+function nextMonth(month, year) {
+    let tmpMonth;
+    let tmpYear;
+    if (month == 11) {
+        tmpYear = year + 1;
+        tmpMonth = 0;
+    } else {
+        tmpMonth = ++month;
+        tmpYear = year;
+    }
+    return {month: tmpMonth, year: tmpYear}
+}
+
+function prevMonth (month, year) {
+     let tmpMonth;
+     let tmpYear;
+     if (month == 0) {
+         tmpYear = year - 1;
+         tmpMonth = 11;
+     } else {
+         tmpMonth = --month;
+         tmpYear = year;
+     }
+     return {month: tmpMonth, year: tmpYear}
+}
+
 
 export default calendar_reducer;

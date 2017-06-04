@@ -14,12 +14,16 @@ class App extends React.Component {
                 <Navigation
                     onNextMonth={this.props.onNextMonth}
                     onPrevMonth={this.props.onPrevMonth}
+                    onNextWeek={this.props.onNextWeek}
+                    onPrevWeek={this.props.onPrevWeek}
                     onToday={this.props.onToday}
                     onWeek={this.props.onWeek}
                     onMonth={this.props.onMonth}
                     onSelectDate={this.props.onSelectDate}
                     currentMonthName={this.props.calendar.currentMonthName}
-                    currentYear={this.props.calendar.currentYear}/>
+                    currentYear={this.props.calendar.currentYear}
+                    displayWeek={this.props.calendar.displayWeek}/>
+                    
                 <CalendarMonth calendar={this.props.calendar}/>
                 <CalendarWeek calendar={this.props.calendar}/>
             </div>

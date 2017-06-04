@@ -14,8 +14,14 @@ export default class Navigation extends React.Component {
                     {this.props.currentMonthName} - {this.props.currentYear}
                 </span>
                 
-                <Button name="Next" id='changeMonth' onChangePage={this.props.onNextMonth}/>
-                <Button name="Prev" id='changeMonth' onChangePage={this.props.onPrevMonth}/>
+                <Button 
+                    name="Next"
+                    id='change' 
+                    onChangePage={this.props.displayWeek ? this.props.onNextWeek : this.props.onNextMonth}/>
+                <Button 
+                    name="Prev"
+                    id='change'
+                    onChangePage={this.props.displayWeek ? this.props.onPrevWeek : this.props.onPrevMonth}/>
             </div>
         )
     }
