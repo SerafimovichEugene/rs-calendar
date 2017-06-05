@@ -5,7 +5,7 @@ import {createStore} from 'redux';
 import App from './components/App';
 import calendar_reducer from './reducers/calendar_reducer';
 
-import parseEvents from './core/eventsDataProvider';
+// import parseDate from './core/eventsDataProvider';
 
 let store = createStore(calendar_reducer);
 
@@ -14,4 +14,4 @@ ReactDOM.render(
     <App/>
 </Provider>, document.getElementById('root'));
 
-parseEvents();
+// parseDate();

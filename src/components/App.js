@@ -24,7 +24,9 @@ class App extends React.Component {
                     currentYear={this.props.calendar.currentYear}
                     displayWeek={this.props.calendar.displayWeek}/>
                     
-                <CalendarMonth calendar={this.props.calendar}/>
+                <CalendarMonth 
+                    calendar={this.props.calendar}
+                    events={this.props.events}/>
                 <CalendarWeek calendar={this.props.calendar}/>
             </div>
         )
@@ -32,7 +34,9 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {calendar: state.calendar};
+    return {calendar: state.calendar,
+            events: state.events
+    };
 }
 
 function mapDispatchToProps(dispatch) {

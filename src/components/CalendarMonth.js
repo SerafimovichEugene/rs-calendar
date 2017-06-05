@@ -1,27 +1,42 @@
 import React from 'react';
+import { chunk } from 'lodash';
 import CalendarMonthRow from './CalendarMonthRow';
 import CalendarMonthDays from './CalendarMonthDays';
 
 export default class CalendarMonth extends React.Component {
     render() {
+        const currYear = this.props.calendar.currentYear;
+        const currMonth = this.props.calendar.currentMonth;
+        const events = this.props.events;
+        let eventsOnMonth = [];
+        //find all events for current year and month
+        for(let i = 0; i < this.props.events.length; i++) {
+            if(currYear == events[i].year && currMonth == events[i].month) {
+                eventsOnMonth.push(events[i]);
+            }
+        }
+        // console.log('event for month', eventsOnMonth);        
         const weeks = this.props.calendar.currentDataMatrix;
         let i = 0;
         const CalendarRows = weeks.map(week => {            
             return (
                 <CalendarMonthRow
                     week={week}
-                    key={++i + [this.props.calendar.currentMonth] + [this.props.calendar.currentYear]}
-                    currentYear={this.props.calendar.currentYear}
-                    currentMonth={this.props.calendar.currentMonth}/>
+                    key={++i + [currMonth] + [currYear]}
+                    currentYear={currYear}
+                    currentMonth={currMonth}
+                    eventsOnMonth={eventsOnMonth}
+                    />
                 )
             });
+        
         return (
             <div
                 className='container'
                 id='calendar-month'
                 style={{display: this.props.calendar.displayMonth ? 'block' : 'none'}}>
                 <CalendarMonthDays daysOfWeek={this.props.calendar.daysOfWeek}/> 
-                {CalendarRows}
+                {CalendarRows}                
             </div>
         )
     }
