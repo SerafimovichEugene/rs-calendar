@@ -9,13 +9,11 @@ export default class CalendarMonth extends React.Component {
         const currMonth = this.props.calendar.currentMonth;
         const events = this.props.events;
         let eventsOnMonth = [];
-        //find all events for current year and month
         for(let i = 0; i < this.props.events.length; i++) {
             if(currYear == events[i].year && currMonth == events[i].month) {
                 eventsOnMonth.push(events[i]);
             }
-        }
-        // console.log('event for month', eventsOnMonth);        
+        }     
         const weeks = this.props.calendar.currentDataMatrix;
         let i = 0;
         const CalendarRows = weeks.map(week => {            
@@ -29,7 +27,6 @@ export default class CalendarMonth extends React.Component {
                     />
                 )
             });
-        
         return (
             <div
                 className='container'

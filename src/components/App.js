@@ -23,7 +23,6 @@ class App extends React.Component {
                     currentMonthName={this.props.calendar.currentMonthName}
                     currentYear={this.props.calendar.currentYear}
                     displayWeek={this.props.calendar.displayWeek}/>
-                    
                 <CalendarMonth 
                     calendar={this.props.calendar}
                     events={this.props.events}/>

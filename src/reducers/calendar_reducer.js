@@ -3,7 +3,7 @@ import { chunk } from 'lodash';
 
 const dataProvider = new DataProvider();
 const initialCalendar = createCalendar(dataProvider.currentYear, dataProvider.currentMonth, false, dataProvider.currentWeek);
-console.log(initialCalendar);
+// console.log(initialCalendar);
 
 function createCalendar(year, month, view, week = 0) {
     const dataMatrix = chunk(dataProvider.getCalendarData(year, month), 7); //chunk by weeks in month
@@ -31,6 +31,30 @@ function createCalendar(year, month, view, week = 0) {
                 location: 'Minsk',
                 start: '2017-06-11T07:23:50Z',
                 date: 11,
+                month: 6,
+                year: 2017,
+                title: 'rs-calendar',
+                type: 'deadline'
+            },
+            {
+                description: 'lorem lorem lorem',
+                duration: 57970447,
+                id: 'fsdfo34nfi',
+                location: 'Minsk',
+                start: '2017-06-13T07:23:50Z',
+                date: 13,
+                month: 6,
+                year: 2017,
+                title: 'rs-calendar',
+                type: 'deadline'
+            },
+            {
+                description: 'lorem lorem lorem',
+                duration: 57970447,
+                id: 'fsdfo34nfi',
+                location: 'Minsk',
+                start: '2017-06-27T07:23:50Z',
+                date: 27,
                 month: 6,
                 year: 2017,
                 title: 'rs-calendar',
