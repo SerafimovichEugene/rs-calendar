@@ -54,10 +54,18 @@ export const month = () => {
     }
 }
 
-export const selectEvent = (event) => {
+export const showEvent = (event, showEvent) => {
     return {
-        type: 'SELECT_EVENT',
-        event: event
+        type: 'SHOW_EVENT',
+        event: event,
+        showEvent: showEvent
+    }
+}
+
+export const hideEvent = (hideEvent) => {
+    return {
+        type: 'HIDE_EVENT',        
+        showEvent: hideEvent
     }
 }
 

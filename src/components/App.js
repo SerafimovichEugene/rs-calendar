@@ -6,10 +6,10 @@ import {nextMonth, prevMonth, nextWeek, prevWeek, today, selectDate, week, month
 import Navigation from './Navigation';
 import CalendarMonth from './CalendarMonth';
 import CalendarWeek from './CalendarWeek';
+import EventWindow from './EventWindow';
 
 class App extends React.Component {
     render() {
-        // console.log('app');
         return (
             <div className="container" id='app'>
                 <Navigation
@@ -29,14 +29,15 @@ class App extends React.Component {
                     events={this.props.events}
                     />
                 <CalendarWeek calendar={this.props.calendar}/>
+                <EventWindow />
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {    
-    return {calendar: state.calendar,
-            events: state.events
+    return {calendar: state.calendar_reducer.calendar,
+            events: state.calendar_reducer.events
     };
 }
 

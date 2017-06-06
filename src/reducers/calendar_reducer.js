@@ -10,8 +10,7 @@ eventsProvider.getEvents('http://128.199.53.150/events', loaded);
 
 const initialCalendar = createCalendar(calendarData.currentYear, calendarData.currentMonth, false, calendarData.currentWeek);
 
-function createCalendar(year, month, view, week = 0) {
-    //chunk by weeks in month   
+function createCalendar(year, month, view, week = 0) {   
     const dataMatrix = chunk(calendarData.getCalendarData(year, month), 7); 
     return {
         calendar: {
@@ -30,11 +29,11 @@ function createCalendar(year, month, view, week = 0) {
             displayWeek: view,
             displayMonth: !view
         },
-        events: eventsProvider.events
+        events: eventsProvider.events,
     }
 }
 
-const calendar_reducer = (state = initialCalendar, action) => {   
+const calendar_reducer = (state = initialCalendar, action) => {  
     switch (action.type) {
         case 'NEXT_MONTH':
             {
@@ -85,11 +84,7 @@ const calendar_reducer = (state = initialCalendar, action) => {
         case 'MONTH':
             {
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
-            }
-        case 'SELECT_EVENT':
-            {
-                console.log(action.event);
-            }        
+            }             
         default:
             return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
     }
@@ -125,10 +120,6 @@ function prevMonth(month, year) {
         month: tmpMonth,
         year: tmpYear
     }
-}
-
-function showWholeEvent(id) {
-
 }
 
 export default calendar_reducer;
