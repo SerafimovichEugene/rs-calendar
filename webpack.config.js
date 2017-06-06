@@ -18,7 +18,7 @@ module.exports = {
     ],
 
     output: {
-        path: path.join(__dirname, 'public', 'assets'),
+        path: path.join(__dirname, 'public'),
         filename: 'index.bundle.js',
     },
 

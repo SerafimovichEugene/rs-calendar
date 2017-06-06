@@ -9,7 +9,6 @@ export default class CalendarMonthDays extends React.Component {
                     {day}
                 </div>
             ));
-        // console.log('CalendarMonthDays ', daysOfWeek);
         return (
             <div className="row" id='month-days'>
                 {daysOfWeek}

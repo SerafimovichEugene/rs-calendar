@@ -1,18 +1,33 @@
-// import events from 'json-loader!./events.json';
+export default class eventsDataProvider {
+    constructor() {
+        this.events = [];
+    }
 
-// console.log(events);
-// console.log(JSON.parse(events));
+    configureEvents() {
+        if(this.events) {
+            this.events.map((event) => {
+                const date = new Date(event.start);
+                event.date = date.getDate();
+                event.month = date.getMonth();
+                event.year = date.getFullYear();
+                event.hour = date.getHours();
+                event.minute = date.getMinutes();
+                return event;
+            });
+        }
+        else {condole.log('no events')}
+        // console.log(this.events);
+    }
 
-export default function parseDate() {
-    const date = new Date('2017-06-11T07:23:50Z');
-    console.log('date ', date.getDate());
-    console.log('month ', date.getMonth());
-    console.log('year ', date.getFullYear());
-    console.log('hours ', date.getHours());
-    console.log('minutes ', date.getMinutes());
-    console.log('seconds ', date.getSeconds());
-
-
-    console.log(date);
-
-} 
+    getEvents(eventsURL, loaded) {
+        fetch(eventsURL).then(response => {
+            return response.json();
+        }).then((json) => {
+            this.events = json;
+            this.configureEvents();
+            document.dispatchEvent(loaded);
+        }).catch((err) => {
+            console.log(err.message);
+        });
+    }
+}

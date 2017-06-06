@@ -54,3 +54,10 @@ export const month = () => {
     }
 }
 
+export const selectEvent = (event) => {
+    return {
+        type: 'SELECT_EVENT',
+        event: event
+    }
+}
+

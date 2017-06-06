@@ -14,8 +14,7 @@ export default class Button extends React.Component {
         return (
             <button
                 className={this.float(this.props.id)}
-                onClick={(e) => {
-                    // console.log(e.target);                    
+                onClick={(e) => {                                        
                     this.props.onChangePage()}
                 }>
                 {this.props.name}

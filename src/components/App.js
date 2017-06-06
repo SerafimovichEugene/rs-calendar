@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {nextMonth, prevMonth, nextWeek, prevWeek, today, selectDate, week, month} from '../actions';
+import {nextMonth, prevMonth, nextWeek, prevWeek, today, selectDate, week, month, selectEvent} from '../actions';
 
 import Navigation from './Navigation';
 import CalendarMonth from './CalendarMonth';
@@ -9,8 +9,9 @@ import CalendarWeek from './CalendarWeek';
 
 class App extends React.Component {
     render() {
+        // console.log('app');
         return (
-            <div className="container">
+            <div className="container" id='app'>
                 <Navigation
                     onNextMonth={this.props.onNextMonth}
                     onPrevMonth={this.props.onPrevMonth}
@@ -25,14 +26,15 @@ class App extends React.Component {
                     displayWeek={this.props.calendar.displayWeek}/>
                 <CalendarMonth 
                     calendar={this.props.calendar}
-                    events={this.props.events}/>
+                    events={this.props.events}
+                    />
                 <CalendarWeek calendar={this.props.calendar}/>
             </div>
         )
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state) {    
     return {calendar: state.calendar,
             events: state.events
     };
@@ -63,7 +65,7 @@ function mapDispatchToProps(dispatch) {
         },
         onSelectDate: date => {
             dispatch(selectDate(date));
-        }
+        }       
     };
 }
 

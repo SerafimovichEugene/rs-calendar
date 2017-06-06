@@ -1,74 +1,40 @@
-import DataProvider from '../core/calendarDataProvider';
+import calendarDataProvider from '../core/calendarDataProvider';
+import eventsDataProvider from '../core/eventsDataProvider'
 import { chunk } from 'lodash';
 
-const dataProvider = new DataProvider();
-const initialCalendar = createCalendar(dataProvider.currentYear, dataProvider.currentMonth, false, dataProvider.currentWeek);
-// console.log(initialCalendar);
+const calendarData = new calendarDataProvider();
+const eventsProvider = new eventsDataProvider();
+const loaded = new Event('loaded');
+const loadEventsInState = new Event('loadEvents');
+eventsProvider.getEvents('http://128.199.53.150/events', loaded);
+
+const initialCalendar = createCalendar(calendarData.currentYear, calendarData.currentMonth, false, calendarData.currentWeek);
 
 function createCalendar(year, month, view, week = 0) {
-    const dataMatrix = chunk(dataProvider.getCalendarData(year, month), 7); //chunk by weeks in month
+    //chunk by weeks in month   
+    const dataMatrix = chunk(calendarData.getCalendarData(year, month), 7); 
     return {
         calendar: {
             weeksInMonth: dataMatrix.length,
             currentWeek: week,
             currentWeekDates: dataMatrix[week],
             currentMonth: month,
-            currentMonthName: dataProvider.months[month],
+            currentMonthName: calendarData.months[month],
             currentYear: year,
             currentDataMatrix: dataMatrix,
-            today: dataProvider.currentDate,
-            todayMonth: dataProvider.currentMonth,
-            todayWeek: dataProvider.currentWeek,
-            todayYear: dataProvider.currentYear,
-            daysOfWeek: dataProvider.daysOfWeek,
+            today: calendarData.currentDate,
+            todayMonth: calendarData.currentMonth,
+            todayWeek: calendarData.currentWeek,
+            todayYear: calendarData.currentYear,
+            daysOfWeek: calendarData.daysOfWeek,
             displayWeek: view,
             displayMonth: !view
         },
-        events: [{
-                description: 'lorem lorem lorem',
-                duration: 57970447,
-                id: 'fsdfo34nfi',
-                location: 'Minsk',
-                start: '2017-06-11T07:23:50Z',
-                date: 11,
-                month: 6,
-                year: 2017,
-                title: 'rs-calendar',
-                type: 'deadline'
-            },
-            {
-                description: 'lorem lorem lorem',
-                duration: 57970447,
-                id: 'fsdfo34nfi',
-                location: 'Minsk',
-                start: '2017-06-13T07:23:50Z',
-                date: 13,
-                month: 6,
-                year: 2017,
-                title: 'rs-calendar',
-                type: 'deadline'
-            },
-            {
-                description: 'lorem lorem lorem',
-                duration: 57970447,
-                id: 'fsdfo34nfi',
-                location: 'Minsk',
-                start: '2017-06-27T07:23:50Z',
-                date: 27,
-                month: 6,
-                year: 2017,
-                title: 'rs-calendar',
-                type: 'deadline'
-            }
-
-        ]
+        events: eventsProvider.events
     }
 }
 
-
-
-
-const calendar_reducer = (state = initialCalendar, action) => {
+const calendar_reducer = (state = initialCalendar, action) => {   
     switch (action.type) {
         case 'NEXT_MONTH':
             {
@@ -104,7 +70,7 @@ const calendar_reducer = (state = initialCalendar, action) => {
                 --week;
                 if (week < 0) {
                     DataForNextMonth = prevMonth(state.calendar.currentMonth, state.calendar.currentYear);
-                    week = dataProvider.getCalendarData(DataForNextMonth.year, DataForNextMonth.month).length / 7 - 1;
+                    week = calendarData.getCalendarData(DataForNextMonth.year, DataForNextMonth.month).length / 7 - 1;
                 }
                 return createCalendar(DataForNextMonth.year, DataForNextMonth.month, true, week);
             }
@@ -116,15 +82,16 @@ const calendar_reducer = (state = initialCalendar, action) => {
             {
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, true, state.calendar.currentWeek);
             }
-
         case 'MONTH':
             {
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
             }
-        case 'SELECT_DATE':
-            return state;
+        case 'SELECT_EVENT':
+            {
+                console.log(action.event);
+            }        
         default:
-            return state;
+            return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
     }
 }
 
@@ -160,6 +127,9 @@ function prevMonth(month, year) {
     }
 }
 
+function showWholeEvent(id) {
+
+}
 
 export default calendar_reducer;
 
