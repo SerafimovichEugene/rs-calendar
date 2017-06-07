@@ -14,10 +14,10 @@ class EventMonth extends React.Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {       
+function mapDispatchToProps(dispatch) {   
+    return {            
         onShowEvent: (event, show) => {
-            console.log('inside eventMonth', show);
+            console.log(event);
             dispatch(showEvent(event, show));
         }
     };

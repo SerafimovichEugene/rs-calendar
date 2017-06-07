@@ -1,12 +1,7 @@
 import calendarDataProvider from '../core/calendarDataProvider';
-import eventsDataProvider from '../core/eventsDataProvider'
 import { chunk } from 'lodash';
 
 const calendarData = new calendarDataProvider();
-const eventsProvider = new eventsDataProvider();
-const loaded = new Event('loaded');
-const loadEventsInState = new Event('loadEvents');
-eventsProvider.getEvents('http://128.199.53.150/events', loaded);
 
 const initialCalendar = createCalendar(calendarData.currentYear, calendarData.currentMonth, false, calendarData.currentWeek);
 
@@ -28,12 +23,12 @@ function createCalendar(year, month, view, week = 0) {
             daysOfWeek: calendarData.daysOfWeek,
             displayWeek: view,
             displayMonth: !view
-        },
-        events: eventsProvider.events,
+        }        
     }
 }
 
-const calendar_reducer = (state = initialCalendar, action) => {  
+const calendar_reducer = (state = initialCalendar, action) => {
+
     switch (action.type) {
         case 'NEXT_MONTH':
             {
@@ -85,7 +80,7 @@ const calendar_reducer = (state = initialCalendar, action) => {
             {
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
             }             
-        default:
+        default: 
             return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
     }
 }

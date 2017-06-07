@@ -1,4 +1,5 @@
 @import 'eventMonth';
+@import 'spinner';
 
 body {
     font-family: sans-serif;
@@ -41,6 +42,7 @@ body {
 }
 
 #calendar-month {
+    position: relative;
     background-color: lightcyan;
     #month-days {
         background-color: lightslategray;

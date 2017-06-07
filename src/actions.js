@@ -1,4 +1,39 @@
-let monthId = 0;
+export const fetchData = (eventsURL, trainersURL) => {
+    return dispatch => {
+        dispatch(isFetching(true));
+        return (            
+            Promise.all([fetch(eventsURL), fetch(trainersURL)])
+            .then(responses => 
+                Promise.all(responses.map(response => {
+                    return response.json();
+                }))
+            )
+            .then(jsons => {
+                console.log('all loaded!!!!!!', jsons);
+                dispatch(isFetching(false));
+                dispatch(recievedData(jsons[0], jsons[1]));
+                dispatch(today());
+            })
+            .catch(err => {
+                console.log(err.message);
+            }));
+    }
+}
+
+const isFetching = (isFetching) => {
+    return {
+        type: 'IS_FETCHING',
+        isFetching: isFetching
+    }
+}
+
+const recievedData = (events, trainers) => {
+    return {
+        type: 'RECIEVED_DATA',
+        events: events,
+        trainers: trainers
+    }
+}
 
 export const nextMonth = (month) => {
     return {
@@ -35,10 +70,9 @@ export const selectDate = (date) => {
     }
 }
 
-export const today = (view) => {
+export const today = () => {
     return {
-        type: 'TODAY',
-        view: view
+        type: 'TODAY'
     }
 }
 
@@ -64,8 +98,7 @@ export const showEvent = (event, showEvent) => {
 
 export const hideEvent = (hideEvent) => {
     return {
-        type: 'HIDE_EVENT',        
+        type: 'HIDE_EVENT',
         showEvent: hideEvent
     }
 }
-

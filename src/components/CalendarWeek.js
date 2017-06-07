@@ -27,7 +27,10 @@ export default class CalendarWeek extends React.Component {
             );           
         }  
         return (
-            <div className='container' id='calendar-week' style={{display: this.props.calendar.displayWeek ? 'block' : 'none'}}>                               
+            <div className='container' 
+                id='calendar-week'                 
+                style={{display: (this.props.calendar.displayWeek && this.props.showCalendar) ? 'block' : 'none'}}
+                >                               
                 <div className='row'>
                     {columns}
                 </div>
