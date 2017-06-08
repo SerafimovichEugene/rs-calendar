@@ -6,7 +6,7 @@ class EventMonth extends React.Component {
     render() {
         return (
             <div className='eventMonth' onClick={(e) => {
-                this.props.onShowEvent(this.props.event, true);
+                this.props.onShowEvent(this.props.event);
             }}>
                 {this.props.event.type}
             </div>
@@ -16,9 +16,9 @@ class EventMonth extends React.Component {
 
 function mapDispatchToProps(dispatch) {   
     return {            
-        onShowEvent: (event, show) => {
+        onShowEvent: (event) => {
             console.log(event);
-            dispatch(showEvent(event, show));
+            dispatch(showEvent(event));
         }
     };
 }

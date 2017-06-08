@@ -2,21 +2,46 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Modal } from 'react-bootstrap';
 import { hideEvent } from '../actions';
-
+import Speakers from './Speakers';
 
 class EventWindow extends React.Component {
-    render() { 
+    render() {
         return(
             <div className="static-modal">
-                <Modal show={this.props.showModal} onHide={() => {this.props.onHideEvent(false)}}>
+                <Modal show={this.props.showEvent} onHide={() => {this.props.onHideEvent()}}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>{this.props.event.type}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <h4>Text in a modal</h4>
+                        <div className='row'>
+                            <div className='col-sm-2'>Start:</div>
+                            <div className='col-xs-10'>{this.props.event.startAt}</div>
+                        </div>
+                        <hr/>
+                        <div className='row'>
+                            <div className='col-sm-2'>Where:</div>
+                            <div className='col-xs-10'>{this.props.event.location}</div>
+                        </div>
+                        <hr/>
+                        <div className='row'>
+                            <div className='col-sm-2'>Duration:</div>
+                            <div className='col-xs-10'>{this.props.event.durationView}</div>
+                        </div>
+                        <hr/>
+                        <div className='row'>
+                            <div className='col-sm-2'>Description:</div>
+                            <div className='col-xs-10'>{this.props.event.description}</div>
+                        </div>
+                        <hr/>
+                        <div className='row'>
+                            <div className='col-sm-2'>Speakers:</div>
+                            <div className='col-xs-10'><Speakers speakersIds={this.props.event.speakers || []}/></div>
+                        </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button onClick={this.close}>Close</button>
+                        <div className='row'>
+                            <div className='col-sm-2'><a href={'#'}>Feedback</a></div>
+                        </div>
                     </Modal.Footer>
                 </Modal>
             </div>
@@ -25,17 +50,19 @@ class EventWindow extends React.Component {
 }
 
 function mapStateToProps(state) {    
-    return {showModal: state.modal_reducer.showModal,
-            event: state.modal_reducer.event
+    return {showEvent: state.modal_reducer.showEvent,
+            event: state.modal_reducer.event,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {       
-        onHideEvent: (show) => {
-            dispatch(hideEvent(show));
+        onHideEvent: () => {
+            dispatch(hideEvent());
         }
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventWindow);
+
+                       

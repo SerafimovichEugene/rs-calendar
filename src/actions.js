@@ -9,8 +9,6 @@ export const fetchData = (eventsURL, trainersURL) => {
                 }))
             )
             .then(jsons => {
-                console.log('all loaded!!!!!!', jsons);
-                dispatch(isFetching(false));
                 dispatch(recievedData(jsons[0], jsons[1]));
                 dispatch(today());
             })
@@ -88,17 +86,15 @@ export const month = () => {
     }
 }
 
-export const showEvent = (event, showEvent) => {
+export const showEvent = (event) => {
     return {
-        type: 'SHOW_EVENT',
-        event: event,
-        showEvent: showEvent
+        type: 'SHOW_WINDOW',
+        event: event
     }
 }
 
-export const hideEvent = (hideEvent) => {
+export const hideEvent = () => {
     return {
-        type: 'HIDE_EVENT',
-        showEvent: hideEvent
+        type: 'HIDE_WINDOW'
     }
 }

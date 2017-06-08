@@ -33,6 +33,11 @@ export default class CalendarMonth extends React.Component {
                 className='container'
                 id='calendar-month'
                 style={{display: (this.props.calendar.displayMonth && this.props.showCalendar) ? 'block' : 'none'}}>
+                <div id='currentMonth'>
+                    <span>
+                        {this.props.currentMonthName} - {this.props.currentYear}
+                    </span>
+                </div>
                 <CalendarMonthDays daysOfWeek={this.props.calendar.daysOfWeek}/>
                 {CalendarRows}                
             </div>

@@ -5,7 +5,6 @@ export default class CalendarMonthRow extends React.Component {
 
     render() {
         const eventsOnMonth = this.props.eventsOnMonth;
-        // console.log(eventsOnMonth);
         const dates = this
             .props
             .week

@@ -1,11 +1,20 @@
 @import 'eventMonth';
 @import 'spinner';
-
+@import 'speaker';
 body {
     font-family: sans-serif;
-    background-color: lightblue;
+    background-color: #ebebeb;
     box-sizing: border-box;
     white-space: -0.125em;
+}
+
+#root {
+    margin-top: 60px;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .container {
@@ -22,50 +31,58 @@ body {
     height: 50px;
     border: 1px solid black;
     background-color: lightcoral;
-    
     .change {
         float: right;
     }
-
     #currentView {
-       text-align: center;
+        text-align: center;
     }
-}
-
-.calendarCell {
-    position: relative;
-    float: left;
-    width: 14.2857%;
-    height: 50px;
-    border: 1px solid black;
-    border-radius: 3px;
 }
 
 #calendar-month {
     position: relative;
+    margin-top: -1px;
     background-color: lightcyan;
+    border: 1px solid black;
+    .row {
+        margin-left: -1px;
+    }
+    #currentMonth {
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
     #month-days {
-        background-color: lightslategray;
-        color: white;
-        .month-day{
+        .month-day {
             float: left;
             width: 14.2857%;
-            height: 50px;
-            border: 1px solid black;
-            border-radius: 3px; 
+            height: 30px;
+            border-left: 1px solid black; // border-radius: 3px; 
+        }
+    }
+    .calendarCell {
+        position: relative;
+        float: left;
+        width: 14.2857%;
+        height: 60px;
+        border-left: 1px solid black; // border-radius: 3px;
+        border-top: 1px solid black; // border-radius: 3px;
+        .eventMonth {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
 
 #calendar-week {
-     background-color: lightblue;
+    background-color: lightblue;
 }
 
-.col-time{
+.col-time {
     float: left;
     display: inline-block;
     width: 10%;
-    .time{
+    .time {
         height: 30px;
         border: 1px solid black;
         border-radius: 3px;
@@ -82,10 +99,8 @@ body {
         border-radius: 3px;
     }
     .day:hover {
-        background-color: red;        
+        background-color: red;
         border: 1px solid black;
         border-radius: 3px;
     }
-
 }
-

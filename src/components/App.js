@@ -10,7 +10,7 @@ import Spinner from './Spinner';
 class App extends React.Component {
     render() {
         return (
-            <div className="container" id='app'> 
+            <div className="container-fluid" id='app'> 
                 <Navigation
                     onNextMonth={this.props.onNextMonth}
                     onPrevMonth={this.props.onPrevMonth}
@@ -20,14 +20,15 @@ class App extends React.Component {
                     onWeek={this.props.onWeek}
                     onMonth={this.props.onMonth}
                     onSelectDate={this.props.onSelectDate}
-                    currentMonthName={this.props.calendar.currentMonthName}
-                    currentYear={this.props.calendar.currentYear}
                     displayWeek={this.props.calendar.displayWeek}/>
                 <Spinner showSpinner={this.props.isFetching}/>
                 <CalendarMonth 
                     calendar={this.props.calendar}
                     events={this.props.events}
-                    showCalendar={!this.props.isFetching}/>
+                    showCalendar={!this.props.isFetching}
+                    currentMonthName={this.props.calendar.currentMonthName}
+                    currentYear={this.props.calendar.currentYear}
+                    />
                 <CalendarWeek 
                     calendar={this.props.calendar}
                     showCalendar={!this.props.isFetching}/>

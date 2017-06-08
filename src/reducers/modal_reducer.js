@@ -1,8 +1,9 @@
-const initialModal = createState(false, {});
+const initialModal = createState({}, false, false);
 
-function createState(showModal, event) {
+function createState(event, showEvent, showDeadline) {
     return {
-        showModal: showModal,
+        showEvent: showEvent,
+        showDeadline: showDeadline,
         event: event
     }
 }
@@ -10,13 +11,24 @@ function createState(showModal, event) {
 const modal_reducer = (state = initialModal, action) => {
     
     switch (action.type) {
-        case 'SHOW_EVENT':
-            {               
-                return createState(action.showEvent, action.event);
-            }
-        case 'HIDE_EVENT':
+        case 'SHOW_WINDOW':
             {
-                return createState(action.showEvent, action.event);
+                // let showEvent= false;
+                // let showDeadline= false;
+                // if (action.event.type === 'webinar' || action.event.type === 'lecture' || action.event.type === 'event') {
+                //     showEvent = true;
+                //     console.log("action event type");
+                // }
+                // else if(action.event.type === 'deadline'){
+                //     showDeadline= true;
+                // }
+
+                return createState(action.event, true, true);
+            }
+ 
+        case 'HIDE_WINDOW':
+            {
+                return createState({}, false, false);
             }
         default:
             return state;
