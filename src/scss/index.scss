@@ -63,7 +63,7 @@ body {
         position: relative;
         float: left;
         width: 14.2857%;
-        height: 60px;
+        height: 86px;
         border-left: 1px solid black; // border-radius: 3px;
         border-top: 1px solid black; // border-radius: 3px;
         .eventMonth {
@@ -75,32 +75,54 @@ body {
 }
 
 #calendar-week {
-    background-color: lightblue;
-}
-
-.col-time {
-    float: left;
-    display: inline-block;
-    width: 10%;
-    .time {
-        height: 30px;
-        border: 1px solid black;
-        border-radius: 3px;
+    background-color: lightcyan;
+    .row {
+        margin-top: -1px;
+        border-right: 1px solid black;
     }
-}
-
-.col-day {
-    float: left;
-    display: inline-block;
-    width: 12.8574%;
-    .day {
-        height: 30px;
-        border: 1px solid black;
-        border-radius: 3px;
+    .col-time {
+        float: left;
+        display: inline-block;
+        width: 10%;
+        .time {
+            height: 25px;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+        }
     }
-    .day:hover {
-        background-color: red;
-        border: 1px solid black;
-        border-radius: 3px;
+    .col-day {
+        float: left;
+        display: inline-block;
+        width: 12.8574%;
+        .day {
+            height: 25px;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .event-day-wrapper {
+            position: relative;
+            height: 600px;
+            .hour-cell {
+                position: absolute;
+                height: 25px;
+                width: 100%;
+                // background-color: moccasin;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+                z-index: 1;
+            }
+            .event-day {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #dbc1a0;
+                text-align: center;
+                height: 50px;
+                width: 90%;
+                border: 1px solid black;
+                border-radius: 4px;
+                z-index: 2;
+            }
+        }
     }
 }

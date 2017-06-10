@@ -22,7 +22,6 @@ const modal_reducer = (state = initialModal, action) => {
                 // else if(action.event.type === 'deadline'){
                 //     showDeadline= true;
                 // }
-
                 return createState(action.event, true, true);
             }
  

@@ -31,6 +31,7 @@ class App extends React.Component {
                     />
                 <CalendarWeek 
                     calendar={this.props.calendar}
+                    events={this.props.events}
                     showCalendar={!this.props.isFetching}/>
                 <EventWindow />
             </div>

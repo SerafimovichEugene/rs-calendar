@@ -6,7 +6,8 @@ const calendarData = new calendarDataProvider();
 const initialCalendar = createCalendar(calendarData.currentYear, calendarData.currentMonth, false, calendarData.currentWeek);
 
 function createCalendar(year, month, view, week = 0) {   
-    const dataMatrix = chunk(calendarData.getCalendarData(year, month), 7); 
+    const dataMatrix = chunk(calendarData.getCalendarData(year, month), 7);
+    // console.log('week_', dataMatrix[week]); 
     return {
         calendar: {
             weeksInMonth: dataMatrix.length,
