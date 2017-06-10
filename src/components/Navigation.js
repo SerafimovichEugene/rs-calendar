@@ -7,12 +7,12 @@ export default class Navigation extends React.Component {
             <div className='container'>
                 <div className='row' id='navigation'>
                     <Button name="Month" id='view'onChangePage={this.props.onMonth}/>
-                    <Button name="Week" id='view' onChangePage={this.props.onWeek}/>
-                    <Button name="Today" id='view' onChangePage={this.props.onToday}/>
+                    <Button name="Week" id='view' onChangePage={this.props.onWeek} arg={this.props.currentWeek}/>
+                    <Button name="Today" id='view' onChangePage={this.props.onToday} arg={this.props.displayWeek}/>
                     
                     <Button 
                         name="Next"
-                        id='change' 
+                        id='change'
                         onChangePage={this.props.displayWeek ? this.props.onNextWeek : this.props.onNextMonth}/>
                     <Button 
                         name="Prev"

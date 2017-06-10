@@ -17,7 +17,9 @@ export default class CalendarWeek extends React.Component {
                 timeColumn={true}
             />
         );
+        
         let eventsOnWeek = [];
+        //get events for current week
         for(let i = 0; i < 7; i++) {
             for(let j = 0; j < events.length; j++) {
                 if( currentWeekDates[i].year == events[j].year && 
@@ -38,9 +40,10 @@ export default class CalendarWeek extends React.Component {
                     columnClassName={'col-day'}
                     itemClass={'day'}
                     day={this.props.calendar.daysOfWeek[i]}
-                    date={this.props.calendar.currentWeekDates[i].date}
-                    month={this.props.calendar.currentWeekDates[i].month}
+                    date={currentWeekDates[i].date}
+                    month={currentWeekDates[i].month}
                     events={dayEvents}
+                    isToday={this.isToday(currentWeekDates[i])}
                 />
             );           
         }  
@@ -55,6 +58,16 @@ export default class CalendarWeek extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    isToday(day) {
+        let isToday = false;
+        if(day.date == this.props.calendar.today &&
+            day.month == this.props.calendar.todayMonth &&
+            day.year == this.props.calendar.todayYear) {
+            isToday = true;
+        }
+        return isToday;
     }
 
     

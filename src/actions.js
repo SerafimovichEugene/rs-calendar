@@ -68,15 +68,17 @@ export const selectDate = (date) => {
     }
 }
 
-export const today = () => {
+export const today = (displayView) => {
     return {
-        type: 'TODAY'
+        type: 'TODAY',
+        displayView: displayView
     }
 }
 
-export const week = () => {
+export const week = (currentWeek) => {
     return {
-        type: 'WEEK'
+        type: 'WEEK',
+        currentWeek: currentWeek
     }
 }
 

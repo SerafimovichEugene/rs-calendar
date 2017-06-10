@@ -22,14 +22,13 @@ export default class CalendarWeekColumDay extends React.Component {
         let timeCells = [];
         for(let j = 0; j < 24; j++) {
             timeCells.push(
-                <div className={'hour-cell'} 
-                        key={j + [this.props.day]}
-                        style={{top: j*25 + 'px'}}>
+                <div 
+                    className={'hour-cell'} 
+                    key={j + [this.props.day]}
+                    style={{top: j*25 + 'px'}}>
                 </div>
             );
         }
-
-        //display day events
         items.push(
             <div className={'event-day-wrapper'} key={i++}> 
                 {events}
@@ -38,7 +37,8 @@ export default class CalendarWeekColumDay extends React.Component {
         ); 
 
         return (
-            <div className={this.props.columnClassName}>
+            <div className={this.props.columnClassName}
+                style={{backgroundColor: this.props.isToday ? '#c1c0bd' : '#fffdf9'}}>
                 {items}
             </div>
         )

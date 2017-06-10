@@ -20,7 +20,9 @@ class App extends React.Component {
                     onWeek={this.props.onWeek}
                     onMonth={this.props.onMonth}
                     onSelectDate={this.props.onSelectDate}
-                    displayWeek={this.props.calendar.displayWeek}/>
+                    displayWeek={this.props.calendar.displayWeek}
+                    currentWeek={this.props.calendar.currentWeek}/>
+                    
                 <Spinner showSpinner={this.props.isFetching}/>
                 <CalendarMonth 
                     calendar={this.props.calendar}
@@ -60,11 +62,11 @@ function mapDispatchToProps(dispatch) {
         onPrevWeek: week => {
             dispatch(prevWeek(week));
         },
-        onToday: () => {
-            dispatch(today());
+        onToday: (displayWeek) => {
+            dispatch(today(displayWeek));
         },
-        onWeek: () => {
-            dispatch(week());
+        onWeek: (currentWeek) => {
+            dispatch(week(currentWeek));
         },
         onMonth: () => {
             dispatch(month());
