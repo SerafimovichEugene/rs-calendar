@@ -22,9 +22,10 @@ export default class CalendarMonth extends React.Component {
                 <CalendarMonthRow
                     week={week}
                     key={++i + [currMonth] + [currYear]}
-                    currentYear={currYear}
-                    currentMonth={currMonth}
                     eventsOnMonth={eventsOnMonth}
+                    today={this.props.calendar.today}
+                    todayMonth={this.props.calendar.todayMonth}
+                    todayYear={this.props.calendar.todayYear}
                     />
                 )
             });
@@ -44,4 +45,3 @@ export default class CalendarMonth extends React.Component {
         )
     }
 }
-// style={{visibility: this.props.showCalendar ? 'visible' : 'collapse'}}

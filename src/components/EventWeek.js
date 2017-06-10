@@ -4,13 +4,12 @@ import { showEvent } from '../actions';
 
 class EventWeek extends React.Component {
     render() {
-        console.log(this.props.event);
         return (
             <div className='event-day' 
                 onClick={(e) => {
                     this.props.onShowEvent(this.props.event);
                 }}
-                style={{top: (this.props.event.hour + (this.props.event.minute / 100))*30 + 'px'}}>
+                style={{top: (this.props.event.hour + 1 + (this.props.event.minute / 100))*25 + 'px'}}>
                 {this.props.event.type}
                 <p>{'start: ' + this.props.event.hour + ':' + this.props.event.minute}</p>
             </div>
@@ -21,7 +20,6 @@ class EventWeek extends React.Component {
 function mapDispatchToProps(dispatch) {   
     return {            
         onShowEvent: (event) => {
-            console.log(event);
             dispatch(showEvent(event));
         }
     };

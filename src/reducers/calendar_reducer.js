@@ -8,6 +8,7 @@ const initialCalendar = createCalendar(calendarData.currentYear, calendarData.cu
 function createCalendar(year, month, view, week = 0) {   
     const dataMatrix = chunk(calendarData.getCalendarData(year, month), 7);
     // console.log('week_', dataMatrix[week]); 
+    
     return {
         calendar: {
             weeksInMonth: dataMatrix.length,
@@ -71,7 +72,7 @@ const calendar_reducer = (state = initialCalendar, action) => {
             }
         case 'TODAY':
             {
-                return createCalendar(state.calendar.todayYear, state.calendar.todayMonth);
+                return createCalendar(state.calendar.todayYear, state.calendar.todayMonth, false);
             }
         case 'WEEK':
             {
@@ -81,8 +82,9 @@ const calendar_reducer = (state = initialCalendar, action) => {
             {
                 return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
             }             
-        default: 
-            return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, false, state.calendar.currentWeek);
+        default:
+            // console.log('default'); 
+            return createCalendar(state.calendar.currentYear, state.calendar.currentMonth, state.calendar.displayWeek, state.calendar.currentWeek);
     }
 }
 

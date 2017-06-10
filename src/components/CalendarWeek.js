@@ -11,10 +11,10 @@ export default class CalendarWeek extends React.Component {
         let columns = [];
         columns.push(
             <CalendarWeekColumnTime
-                    key={ColumnId++}
-                    columnClassName={'col-time'}
-                    itemClass={'time'}
-                    timeColumn={true}
+                key={ColumnId++}
+                columnClassName={'col-time'}
+                itemClass={'time'}
+                timeColumn={true}
             />
         );
         let eventsOnWeek = [];
@@ -45,6 +45,7 @@ export default class CalendarWeek extends React.Component {
             );           
         }  
         return (
+            
             <div className='container'
                 id='calendar-week'                 
                 style={{display: (this.props.calendar.displayWeek && this.props.showCalendar) ? 'block' : 'none'}}
