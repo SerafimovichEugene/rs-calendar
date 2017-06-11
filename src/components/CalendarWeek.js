@@ -2,7 +2,6 @@ import React from 'react';
 import CalendarWeekColumnTime from './CalendarWeekColumnTime';
 import CalendarWeekColumnDay from './CalendarWeekColumnDay';
 
-
 export default class CalendarWeek extends React.Component {
     render() {
         const currentWeekDates = this.props.calendar.currentWeekDates;
@@ -17,7 +16,6 @@ export default class CalendarWeek extends React.Component {
                 timeColumn={true}
             />
         );
-        
         let eventsOnWeek = [];
         //get events for current week
         for(let i = 0; i < 7; i++) {
@@ -51,8 +49,12 @@ export default class CalendarWeek extends React.Component {
             
             <div className='container'
                 id='calendar-week'                 
-                style={{display: (this.props.calendar.displayWeek && this.props.showCalendar) ? 'block' : 'none'}}
-                >                               
+                style={{display: (this.props.calendar.displayWeek && this.props.showCalendar) ? 'block' : 'none'}}>
+                 <div id='currentMonth'>
+                    <span>
+                        {this.props.calendar.currentMonthName} - {this.props.calendar.currentYear}
+                    </span>
+                </div>                               
                 <div className='row'>
                     {columns}
                 </div>

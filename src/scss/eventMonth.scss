@@ -1,13 +1,16 @@
 
 .eventMonth {    
-    width: 100%;
+    width: 96%;
     margin-top: 2px;
+    margin-left: 2%;
     // margin: 2;
-    // border: 1px solid red;
-    background-color: azure;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #dbc1a0;
+    text-align: center;
 }
 
 .eventMonth:hover {
-    background-color: beige;
+    background-color: #f9e7cf;
     cursor: pointer;
 }
