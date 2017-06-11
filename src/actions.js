@@ -1,102 +1,75 @@
-export const fetchData = (eventsURL, trainersURL) => {
-    return dispatch => {
-        dispatch(isFetching(true));
-        return (            
-            Promise.all([fetch(eventsURL), fetch(trainersURL)])
-            .then(responses => 
-                Promise.all(responses.map(response => {
-                    return response.json();
-                }))
-            )
-            .then(jsons => {
-                dispatch(recievedData(jsons[0], jsons[1]));
-                dispatch(today());
-            })
-            .catch(err => {
-                console.log(err.message);
-            }));
-    }
-}
+export const fetchData = (eventsURL, trainersURL) => (dispatch) => {
+  dispatch(isFetching(true));
+  return (
+    Promise.all([fetch(eventsURL), fetch(trainersURL)])
+    .then(responses =>
+      Promise.all(responses.map((response) => response.json())),
+    )
+    .then((jsons) => {
+      dispatch(recievedData(jsons[0], jsons[1]));
+      dispatch(today());
+    })
+    .catch((err) => {
+      alert(err.message);
+    })
+  );
+};
 
-const isFetching = (isFetching) => {
-    return {
-        type: 'IS_FETCHING',
-        isFetching: isFetching
-    }
-}
+const isFetching = isFetching => ({
+  type: 'IS_FETCHING',
+  isFetching,
+});
 
-const recievedData = (events, trainers) => {
-    return {
-        type: 'RECIEVED_DATA',
-        events: events,
-        trainers: trainers
-    }
-}
+const recievedData = (events, trainers) => ({
+  type: 'RECIEVED_DATA',
+  events,
+  trainers,
+});
 
-export const nextMonth = (month) => {
-    return {
-        type: 'NEXT_MONTH',
-        month: month
-    }
-}
+export const nextMonth = month => ({
+  type: 'NEXT_MONTH',
+  month,
+});
 
-export const prevMonth = (month) => {
-    return {
-        type: 'PREV_MONTH',
-        month: month
-    }
-}
+export const prevMonth = month => ({
+  type: 'PREV_MONTH',
+  month,
+});
 
-export const nextWeek = (week) => {
-    return {
-        type: 'NEXT_WEEK',
-        week: week
-    }
-}
+export const nextWeek = week => ({
+  type: 'NEXT_WEEK',
+  week,
+});
 
-export const prevWeek = (week) => {
-    return {
-        type: 'PREV_WEEK',
-        week: week
-    }
-}
+export const prevWeek = week => ({
+  type: 'PREV_WEEK',
+  week,
+});
 
-export const selectDate = (date) => {
-    return {
-        type: 'SELECT_DATE',
-        date: date
-    }
-}
+export const selectDate = date => ({
+  type: 'SELECT_DATE',
+  date,
+});
 
-export const today = (displayView) => {
-    return {
-        type: 'TODAY',
-        displayView: displayView
-    }
-}
+export const today = displayView => ({
+  type: 'TODAY',
+  displayView,
+});
 
-export const week = (currentWeek) => {
-    return {
-        type: 'WEEK',
-        currentWeek: currentWeek
-    }
-}
+export const week = currentWeek => ({
+  type: 'WEEK',
+  currentWeek,
+});
 
-export const month = () => {
-    return {
-        type: 'MONTH'
-    }
-}
+export const month = () => ({
+  type: 'MONTH',
+});
 
-export const showEvent = (event) => {
-    return {
-        type: 'SHOW_WINDOW',
-        event: event
-    }
-}
+export const showEvent = event => ({
+  type: 'SHOW_WINDOW',
+  event,
+});
 
-export const hideEvent = () => {
-    return {
-        type: 'HIDE_WINDOW'
-    }
-}
+export const hideEvent = () => ({
+  type: 'HIDE_WINDOW',
+});
