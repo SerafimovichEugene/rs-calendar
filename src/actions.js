@@ -15,7 +15,7 @@ export const fetchData = (eventsURL, trainersURL) => (dispatch) => {
   );
 };
 
-const isFetching = isFetching => ({
+const isFetching = (isFetching) => ({
   type: 'IS_FETCHING',
   isFetching,
 });

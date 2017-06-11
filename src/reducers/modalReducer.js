@@ -24,6 +24,7 @@ const modalReducer = (state = initialModal, action) => {
         // else if(action.event.type === 'deadline'){
         //     showDeadline= true;
         // }
+        console.log(action.event);
         return createState(action.event, true, true);
       }
     case 'HIDE_WINDOW':

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 import { hideEvent } from '../actions';
 import Speakers from './Speakers';
+import Resources from './Resources';
 
 class EventWindow extends React.Component {
   render() {
@@ -38,6 +39,12 @@ class EventWindow extends React.Component {
               <div className="col-xs-10"><Speakers speakersIds={this.props.event.speakers || []} />
               </div>
             </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-2">Resources:</div>
+              <div className="col-xs-10"><Resources resources={this.props.event.resources || []} />
+              </div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <div className="row">
@@ -65,4 +72,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventWindow);
-
