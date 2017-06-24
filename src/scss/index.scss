@@ -46,6 +46,8 @@ body {
     #currentMonth {
         border-bottom: 1px solid black;
         text-align: center;
+        font-size: large;
+        font-weight: bold;
     }
     #month-days {
         .month-day {
@@ -84,9 +86,11 @@ body {
 #calendar-week {
     background-color: lightcyan;
     min-width: 520px;
+    text-align: center;
     #currentMonth {
         border: 1px solid black;
-        text-align: center;
+        font-size: large;
+        font-weight: bold;
     }
     .row {
         margin-top: -1px;
@@ -108,10 +112,16 @@ body {
         display: inline-block;
         width: 12.8574%;
         border-top: 1px solid black;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         .day {
             height: 25px;
             border-left: 1px solid black;
             border-bottom: 1px solid black;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .event-day-wrapper {
             position: relative;
@@ -134,11 +144,11 @@ body {
                 width: 90%;
                 border: 1px solid black;
                 border-radius: 4px;
-                z-index: 2;
-                cursor: pointer;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                z-index: 2;
+                cursor: pointer;
             }
             .event-day:hover {
                 background-color: #f9e7cf;

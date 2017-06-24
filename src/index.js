@@ -11,11 +11,9 @@ const store = createStore(
   reducer,
   applyMiddleware(thunk),
 );
-
 store.dispatch(fetchData('http://128.199.53.150/events', 'http://128.199.53.150/trainers'));
-
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>, document.getElementById('root'),
 );

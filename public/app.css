@@ -8372,6 +8372,14 @@ button.close {
   border-radius: 4px;
 }
 
+.resource {
+  margin-top: -1px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   background-color: #ebebeb;
@@ -8491,12 +8499,18 @@ body {
   display: inline-block;
   width: 12.8574%;
   border-top: 1px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #calendar-week .col-day .day {
   height: 25px;
   border-left: 1px solid black;
   border-bottom: 1px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #calendar-week .col-day .event-day-wrapper {
@@ -8525,9 +8539,6 @@ body {
   border-radius: 4px;
   z-index: 2;
   cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 #calendar-week .col-day .event-day-wrapper .event-day:hover {
