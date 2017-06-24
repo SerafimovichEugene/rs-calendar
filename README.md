@@ -1,5 +1,5 @@
 # rs-calendar
-[Calendar](http://serafimovicheugene.github.io/rs-calendar/.) of tasks for [Rolling Scopes School](https://school.rollingscopes.com/) 
+[Calendar](http://car-park-attendant-paw-10772.bitballoon.com/) of tasks for [Rolling Scopes School](https://school.rollingscopes.com/) 
 with React and Redux
 
 to run locally:
