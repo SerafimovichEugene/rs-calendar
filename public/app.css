@@ -8430,6 +8430,8 @@ body {
 #calendar-month #currentMonth {
   border-bottom: 1px solid black;
   text-align: center;
+  font-size: large;
+  font-weight: bold;
 }
 
 #calendar-month #month-days .month-day {
@@ -8469,11 +8471,13 @@ body {
 #calendar-week {
   background-color: lightcyan;
   min-width: 520px;
+  text-align: center;
 }
 
 #calendar-week #currentMonth {
   border: 1px solid black;
-  text-align: center;
+  font-size: large;
+  font-weight: bold;
 }
 
 #calendar-week .row {
@@ -8537,6 +8541,9 @@ body {
   width: 90%;
   border: 1px solid black;
   border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   z-index: 2;
   cursor: pointer;
 }
