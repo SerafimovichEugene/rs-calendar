@@ -4,7 +4,6 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
 
-// eslint-disable-next-line no-console
 console.log(`=> bootstrap-loader configuration: ${bootstrapEntryPoints.prod}`);
 
 module.exports = {
