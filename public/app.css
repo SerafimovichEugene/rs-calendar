@@ -8468,6 +8468,11 @@ body {
   cursor: pointer;
 }
 
+#calendar-month .notCurrMonthDay {
+  background-color: #d6d7d8;
+  color: #d6d7d8;
+}
+
 #calendar-week {
   background-color: lightcyan;
   min-width: 520px;

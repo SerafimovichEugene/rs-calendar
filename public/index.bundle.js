@@ -46365,6 +46365,7 @@ var CalendarMonth = function (_React$Component) {
       var CalendarRows = weeks.map(function (week) {
         return _react2.default.createElement(_CalendarMonthRow2.default, {
           week: week,
+          currMonth: currMonth,
           key: ++i + [currMonth] + [currYear],
           eventsOnMonth: eventsOnMonth,
           today: _this2.props.calendar.today,
@@ -46512,10 +46513,11 @@ var CalendarMonthRow = function (_React$Component) {
 
       var eventsOnMonth = this.props.eventsOnMonth;
       var dates = this.props.week.map(function (dateObj) {
+        var isInCurrMonth = _this2.props.currMonth === dateObj.month ? true : false;
         return _react2.default.createElement(
           'div',
           {
-            className: 'calendarCell',
+            className: isInCurrMonth ? 'calendarCell' : 'calendarCell notCurrMonthDay',
             key: [dateObj.date] + [dateObj.month] + [dateObj.year],
             style: { background: _this2.isToday(dateObj) ? '#c1c0bd' : '#fffdf9' }
           },
