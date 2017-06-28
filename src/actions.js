@@ -1,26 +1,9 @@
-export const fetchData = (eventsURL, trainersURL) => (dispatch) => {
-  dispatch(isFetching(true));
-  return (
-    Promise.all([fetch(eventsURL), fetch(trainersURL)])
-    .then(responses =>
-      Promise.all(responses.map((response) => response.json())),
-    )
-    .then((jsons) => {
-      dispatch(recievedData(jsons[0], jsons[1]));
-      dispatch(today());
-    })
-    .catch((err) => {
-      alert(err.message);
-    })
-  );
-};
-
-const isFetching = (isFetching) => ({
+export const isFetching = (isFetching) => ({
   type: 'IS_FETCHING',
   isFetching,
 });
 
-const recievedData = (events, trainers) => ({
+export const recievedData = (events, trainers) => ({
   type: 'RECIEVED_DATA',
   events,
   trainers,

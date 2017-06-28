@@ -5,7 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import reducer from './reducers/rootReducer';
-import { fetchData } from './actions';
+import fetchData from './fetchData';
+
 
 const store = createStore(
   reducer,
