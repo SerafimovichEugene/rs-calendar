@@ -14463,14 +14463,14 @@ module.exports = reactProdInvariant;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var isFetching = function isFetching(_isFetching) {
+var isFetching = exports.isFetching = function isFetching(_isFetching) {
   return {
     type: 'IS_FETCHING',
     isFetching: _isFetching
   };
 };
 
-var recievedData = function recievedData(events, trainers) {
+var recievedData = exports.recievedData = function recievedData(events, trainers) {
   return {
     type: 'RECIEVED_DATA',
     events: events,
@@ -46087,10 +46087,12 @@ var _rootReducer2 = _interopRequireDefault(_rootReducer);
 
 var _fetchData = __webpack_require__(237);
 
+var _fetchData2 = _interopRequireDefault(_fetchData);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var store = (0, _redux.createStore)(_rootReducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-store.dispatch((0, _fetchData.fetchData)('http://128.199.53.150/events', 'http://128.199.53.150/trainers'));
+store.dispatch((0, _fetchData2.default)('http://128.199.53.150/events', 'http://128.199.53.150/trainers'));
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
   { store: store },
@@ -47590,12 +47592,13 @@ exports.default = calendarDataProvider;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = fetchData;
 
 var _actions = __webpack_require__(53);
 
-var fetchData = function fetchData(eventsURL, trainersURL) {
+function fetchData(eventsURL, trainersURL) {
   return function (dispatch) {
-    dispatch(isFetching(true));
+    dispatch((0, _actions.isFetching)(true));
     return Promise.all([fetch(eventsURL), fetch(trainersURL)]).then(function (responses) {
       return Promise.all(responses.map(function (response) {
         return response.json();
@@ -47607,9 +47610,7 @@ var fetchData = function fetchData(eventsURL, trainersURL) {
       alert(err.message);
     });
   };
-};
-
-exports.default = fetchData;
+}
 
 /***/ }),
 /* 238 */

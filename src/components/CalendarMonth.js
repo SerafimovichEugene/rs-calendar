@@ -19,6 +19,7 @@ export default class CalendarMonth extends React.Component {
     const CalendarRows = weeks.map(week => (
       <CalendarMonthRow
         week={week}
+        currMonth={currMonth}
         key={++i + [currMonth] + [currYear]}
         eventsOnMonth={eventsOnMonth}
         today={this.props.calendar.today}

@@ -15,9 +15,11 @@ export default class CalendarMonthRow extends React.Component {
 
   render() {
     const eventsOnMonth = this.props.eventsOnMonth;
-    const dates = this.props.week.map(dateObj => (
+    const dates = this.props.week.map((dateObj) => {
+      const isInCurrMonth = this.props.currMonth === dateObj.month ? true : false;
+      return (
       <div
-        className="calendarCell"
+        className={isInCurrMonth ? 'calendarCell' : 'calendarCell notCurrMonthDay'}
         key={[dateObj.date] + [dateObj.month] + [dateObj.year]}
         style={{ background: this.isToday(dateObj) ? '#c1c0bd' : '#fffdf9' }}
       >
@@ -28,7 +30,8 @@ export default class CalendarMonthRow extends React.Component {
           } return null;
         })}
       </div>
-    ));
+      );
+    });
     return (
       <div className="row">
         {dates}
