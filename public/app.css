@@ -8380,6 +8380,21 @@ button.close {
   border-radius: 4px;
 }
 
+#navigation {
+  text-align: center;
+  border-radius: 5px;
+  background-color: lightcyan;
+  min-width: 310px;
+}
+
+#navigation .changeView {
+  float: left;
+}
+
+#navigation .admin {
+  float: right;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   background-color: #ebebeb;
@@ -8400,20 +8415,6 @@ body {
 .row {
   margin-left: 0;
   margin-right: 0;
-}
-
-#navigation {
-  border-radius: 5px;
-  background-color: lightcyan;
-  min-width: 310px;
-}
-
-#navigation .change {
-  float: right;
-}
-
-#navigation #currentView {
-  text-align: center;
 }
 
 #calendar-month {

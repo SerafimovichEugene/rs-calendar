@@ -1,5 +1,5 @@
-import CalendarDataProvider from '../core/calendarDataProvider';
 import { chunk } from 'lodash';
+import CalendarDataProvider from '../core/calendarDataProvider';
 
 const calendarData = new CalendarDataProvider();
 

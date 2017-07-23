@@ -1,6 +1,10 @@
 @import 'spinner';
 @import 'speaker';
 @import 'resource';
+@import 'navigation';
+@import 'calendarSwitcher';
+@import 'admin';
+
 body {
     font-family: 'Lato', sans-serif;
     background-color: #ebebeb;
@@ -23,16 +27,10 @@ body {
     margin-right: 0;
 }
 
-#navigation {
-    border-radius: 5px;
-    background-color: lightcyan;
-    min-width: 310px;
-    .change {
-        float: right;
-    }
-    #currentView {
-        text-align: center;
-    }
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 #calendar-month {
@@ -42,12 +40,6 @@ body {
     border: 1px solid black;
     .row {
         margin-left: -1px;
-    }
-    #currentMonth {
-        border-bottom: 1px solid black;
-        text-align: center;
-        font-size: large;
-        font-weight: bold;
     }
     #month-days {
         .month-day {
@@ -81,10 +73,9 @@ body {
             cursor: pointer;
         }
     }
-    .notCurrMonthDay{
+    .notCurrMonthDay {
         background-color: #d6d7d8;
         color: #d6d7d8;
-        
     }
 }
 
@@ -92,18 +83,12 @@ body {
     background-color: lightcyan;
     min-width: 520px;
     text-align: center;
-    #currentMonth {
-        border: 1px solid black;
-        font-size: large;
-        font-weight: bold;
-    }
     .row {
         margin-top: -1px;
         border-right: 1px solid black;
     }
     .col-time {
-        float: left;
-        display: inline-block;
+        float: left; // display: inline-block;
         width: 10%;
         border-top: 1px solid black;
         .time {
@@ -113,8 +98,7 @@ body {
         }
     }
     .col-day {
-        float: left;
-        display: inline-block;
+        float: left; // display: inline-block;
         width: 12.8574%;
         border-top: 1px solid black;
         white-space: nowrap;

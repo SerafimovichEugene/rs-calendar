@@ -56,3 +56,16 @@ export const showEvent = event => ({
 export const hideEvent = () => ({
   type: 'HIDE_WINDOW',
 });
+
+export const showAdminLogIn = () => ({
+  type: 'SHOW_ADMIN_LOGIN_FORM',
+});
+
+export const hideAdminLogIn = () => ({
+  type: 'HIDE_ADMIN_LOGIN_FORM',
+});
+
+export const adminLogInSubmit = credentials => ({
+  type: 'ADMIN_LOGIN_SUBMIT',
+  credentials,
+});

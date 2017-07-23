@@ -26,7 +26,7 @@ const fetchDataReducer = (state = initialState, action) => {
   }
 };
 
-function msToTime(duration) {
+function msToMin(duration) {
     // let minutes = parseInt((duration / (1000 * 60)) % 60);
     // let hours = parseInt((duration / (1000 * 60 * 60)) % 24);
     // hours = (hours < 10) ? "0" + hours : hours;
@@ -46,7 +46,7 @@ function configureEvents(events) {
     event.hour = date.getHours();
     event.minute = date.getMinutes();
     event.startAt = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
-    event.durationView = msToTime(event.duration);
+    event.durationView = msToMin(event.duration);
     return event;
   });
 }

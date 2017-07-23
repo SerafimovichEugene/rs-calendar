@@ -16,20 +16,20 @@ export default class CalendarMonthRow extends React.Component {
   render() {
     const eventsOnMonth = this.props.eventsOnMonth;
     const dates = this.props.week.map((dateObj) => {
-      const isInCurrMonth = this.props.currMonth === dateObj.month ? true : false;
+      const isInCurrMonth = this.props.currMonth === dateObj.month;
       return (
-      <div
-        className={isInCurrMonth ? 'calendarCell' : 'calendarCell notCurrMonthDay'}
-        key={[dateObj.date] + [dateObj.month] + [dateObj.year]}
-        style={{ background: this.isToday(dateObj) ? '#c1c0bd' : '#fffdf9' }}
-      >
-        {dateObj.date}
-        {eventsOnMonth.map((event) => {
-          if (event.date === dateObj.date && event.month === dateObj.month) {
-            return <EventMonth className="eventMonth" key={event.id} event={event} />;
-          } return null;
-        })}
-      </div>
+        <div
+          className={isInCurrMonth ? 'calendarCell' : 'calendarCell notCurrMonthDay'}
+          key={[dateObj.date] + [dateObj.month] + [dateObj.year]}
+          style={{ background: this.isToday(dateObj) ? '#c1c0bd' : '#fffdf9' }}
+        >
+          {dateObj.date}
+          {eventsOnMonth.map((event) => {
+            if (event.date === dateObj.date && event.month === dateObj.month) {
+              return <EventMonth className="eventMonth" key={event.id} event={event} />;
+            } return null;
+          })}
+        </div>
       );
     });
     return (

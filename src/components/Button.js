@@ -2,24 +2,25 @@ import React from 'react';
 
 export default class Button extends React.Component {
 
-  float(key) {
-    if (key === 'change') {
-      return 'btn btn-default change';
+  isTurnPage(turnPageIcon) {
+    if (turnPageIcon === 'left') {
+      return <span className="glyphicon glyphicon-chevron-left" />;
+    } else if (turnPageIcon === 'right') {
+      return <span className="glyphicon glyphicon-chevron-right" />;
     }
-    return 'btn btn-default';
+    return '';
   }
 
   render() {
     return (
       <button
-        className={this.float(this.props.id)}
-        onClick={() => {
-          this.props.onChangePage(this.props.arg);
-        }
-        }
+        className={this.props.className}
+        onClick={() => { this.props.onChangePage(this.props.arg); }}
       >
+        {this.isTurnPage(this.props.turnPage)}
         {this.props.name}
       </button>
     );
   }
 }
+

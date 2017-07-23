@@ -58,7 +58,8 @@ class EventWindow extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { showEvent: state.modalReducer.showEvent,
+  return {
+    showEvent: state.modalReducer.showEvent,
     event: state.modalReducer.event,
   };
 }

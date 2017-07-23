@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { nextMonth, prevMonth, nextWeek, prevWeek, today, week, month } from '../actions';
+import { nextMonth, prevMonth, nextWeek, prevWeek, today, week, month, showAdminLogIn } from '../actions';
 import Navigation from './Navigation';
 import CalendarMonth from './CalendarMonth';
 import CalendarWeek from './CalendarWeek';
 import EventWindow from './EventWindow';
 import Spinner from './Spinner';
+import AdminLogIn from './AdminLogIn';
 
 class App extends React.Component {
 
@@ -13,14 +14,10 @@ class App extends React.Component {
     return (
       <div className="container-fluid" id="app">
         <Navigation
-          onNextMonth={this.props.onNextMonth}
-          onPrevMonth={this.props.onPrevMonth}
-          onNextWeek={this.props.onNextWeek}
-          onPrevWeek={this.props.onPrevWeek}
           onToday={this.props.onToday}
           onWeek={this.props.onWeek}
           onMonth={this.props.onMonth}
-          onSelectDate={this.props.onSelectDate}
+          onAdmin={this.props.onAdmin}
           displayWeek={this.props.calendar.displayWeek}
           currentWeek={this.props.calendar.currentWeek}
         />
@@ -28,25 +25,42 @@ class App extends React.Component {
         <CalendarMonth
           calendar={this.props.calendar}
           events={this.props.events}
-          showCalendar={!this.props.isFetching}
+          showCalendar={
+            !this.props.isFetching &&
+            this.props.calendar.displayMonth}
           currentMonthName={this.props.calendar.currentMonthName}
           currentYear={this.props.calendar.currentYear}
+          onNextMonth={this.props.onNextMonth}
+          onPrevMonth={this.props.onPrevMonth}
+          onNextWeek={this.props.onNextWeek}
+          onPrevWeek={this.props.onPrevWeek}
+          displayWeek={this.props.calendar.displayWeek}
         />
         <CalendarWeek
           calendar={this.props.calendar}
           events={this.props.events}
-          showCalendar={!this.props.isFetching}
+          showCalendar={
+            !this.props.isFetching &&
+            this.props.calendar.displayWeek}
+          onNextMonth={this.props.onNextMonth}
+          onPrevMonth={this.props.onPrevMonth}
+          onNextWeek={this.props.onNextWeek}
+          onPrevWeek={this.props.onPrevWeek}
+          displayWeek={this.props.calendar.displayWeek}
         />
         <EventWindow />
+        <AdminLogIn />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { calendar: state.calendarReducer.calendar,
+  return {
+    calendar: state.calendarReducer.calendar,
     events: state.fetchDataReducer.events,
     isFetching: state.fetchDataReducer.isFetching,
+    // showAdminPage: state.adminReducer.showAdminPage,
   };
 }
 
@@ -72,6 +86,9 @@ function mapDispatchToProps(dispatch) {
     },
     onMonth: () => {
       dispatch(month());
+    },
+    onAdmin: () => {
+      dispatch(showAdminLogIn());
     },
   };
 }

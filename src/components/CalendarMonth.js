@@ -1,6 +1,7 @@
 import React from 'react';
 import CalendarMonthRow from './CalendarMonthRow';
 import CalendarMonthDays from './CalendarMonthDays';
+import CalendarSwitcher from './CalendarSwitcher';
 
 export default class CalendarMonth extends React.Component {
 
@@ -16,30 +17,35 @@ export default class CalendarMonth extends React.Component {
     }
     const weeks = this.props.calendar.currentDataMatrix;
     let i = 0;
-    const CalendarRows = weeks.map(week => (
-      <CalendarMonthRow
-        week={week}
-        currMonth={currMonth}
-        key={++i + [currMonth] + [currYear]}
-        eventsOnMonth={eventsOnMonth}
-        today={this.props.calendar.today}
-        todayMonth={this.props.calendar.todayMonth}
-        todayYear={this.props.calendar.todayYear}
-      />
-      ));
+    const CalendarRows = weeks.map(week => (<CalendarMonthRow
+      week={week}
+      currMonth={currMonth}
+      key={++i + [currMonth] + [currYear]}
+      eventsOnMonth={eventsOnMonth}
+      today={this.props.calendar.today}
+      todayMonth={this.props.calendar.todayMonth}
+      todayYear={this.props.calendar.todayYear} 
+    />));
     return (
       <div
         className="container"
         id="calendar-month"
-        style={{ display: (this.props.calendar.displayMonth && this.props.showCalendar) ? 'block' : 'none' }}
+        style={{
+          display: (this.props.showCalendar)
+          ? 'block'
+          : 'none',
+        }}
       >
-        <div id="currentMonth">
-          <span>
-            {this.props.currentMonthName} - {this.props.currentYear}
-          </span>
-        </div>
-        <CalendarMonthDays daysOfWeek={this.props.calendar.daysOfWeek} />
-        {CalendarRows}
+        <CalendarSwitcher
+          onNextMonth={this.props.onNextMonth}
+          onPrevMonth={this.props.onPrevMonth}
+          onNextWeek={this.props.onNextWeek}
+          onPrevWeek={this.props.onPrevWeek}
+          displayWeek={this.props.calendar.displayWeek}
+          currentMonthName={this.props.calendar.currentMonthName}
+          currentYear={this.props.calendar.currentYear} 
+        />
+        <CalendarMonthDays daysOfWeek={this.props.calendar.daysOfWeek} /> {CalendarRows}
       </div>
     );
   }

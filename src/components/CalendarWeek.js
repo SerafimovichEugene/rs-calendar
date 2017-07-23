@@ -1,6 +1,7 @@
 import React from 'react';
 import CalendarWeekColumnTime from './CalendarWeekColumnTime';
 import CalendarWeekColumnDay from './CalendarWeekColumnDay';
+import CalendarSwitcher from './CalendarSwitcher';
 
 export default class CalendarWeek extends React.Component {
 
@@ -60,13 +61,17 @@ export default class CalendarWeek extends React.Component {
       <div
         className="container"
         id="calendar-week"
-        style={{ display: (this.props.calendar.displayWeek && this.props.showCalendar) ? 'block' : 'none' }}
+        style={{ display: (this.props.showCalendar) ? 'block' : 'none' }}
       >
-        <div id="currentMonth">
-          <span>
-            {this.props.calendar.currentMonthName} - {this.props.calendar.currentYear}
-          </span>
-        </div>
+        <CalendarSwitcher
+          onNextMonth={this.props.onNextMonth}
+          onPrevMonth={this.props.onPrevMonth}
+          onNextWeek={this.props.onNextWeek}
+          onPrevWeek={this.props.onPrevWeek}
+          displayWeek={this.props.calendar.displayWeek}
+          currentMonthName={this.props.calendar.currentMonthName}
+          currentYear={this.props.calendar.currentYear}
+        />
         <div className="row">
           {columns}
         </div>
