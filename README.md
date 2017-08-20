@@ -1,5 +1,5 @@
 # SerafimovichEugene-front-end-coure
 
-Serafimovich Eugene
+Rolling Scopes school calendar - ReactJS and Redux.
 
-BNTU, ATF - 2012
+API server for Rolling Scopes School calendar - NodeJS.
