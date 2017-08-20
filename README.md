@@ -1,3 +1,5 @@
-# rs-calendar
-to run locally: 
-```webpack-dev-server --output-public-path=/public/```
+# SerafimovichEugene-front-end-coure
+
+Serafimovich Eugene
+
+BNTU, ATF - 2012

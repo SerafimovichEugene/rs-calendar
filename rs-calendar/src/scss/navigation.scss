@@ -1,0 +1,24 @@
+#navigation {
+    text-align: center;
+    background-color: #cee1e5;
+    border: 2px solid #374d6b;
+    min-width: 310px;
+    padding: 6px;
+    .changeView {
+        float: left;
+    }    
+    .admin {        
+        float: right;
+    }
+    .adminName {
+        margin-top: 5px;
+        margin-right: 10px;
+        float: right;
+        text-decoration: underline;
+    }    
+
+}
+
+.switcher:hover {
+    color: #b54527;
+}

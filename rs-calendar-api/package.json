@@ -1,0 +1,39 @@
+{
+  "name": "rs-calendar-api",
+  "version": "1.0.0",
+  "description": "api server with node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js --exec babel-node --presets env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SerafimovichEugene/rs-calendar-api.git"
+  },
+  "author": "Eugene Serafimovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SerafimovichEugene/rs-calendar-api/issues"
+  },
+  "homepage": "https://github.com/SerafimovichEugene/rs-calendar-api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.3",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0",
+    "nodemon": "^1.11.0"
+  }
+}

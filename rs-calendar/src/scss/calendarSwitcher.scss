@@ -1,0 +1,16 @@
+#currentMonth {
+    border-bottom: 1px solid #374d6b;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    .switcher {
+        border: 0;
+        background: inherit;
+    }
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+}

@@ -1,0 +1,65 @@
+#adminPanel {
+    padding: 5px 5px 5px 5px;
+    border: #374d6b 2px solid;
+    border-top: 0;
+}
+
+.adminEventRow {
+    animation: fadein 0.6s; 
+    margin-top: 5px;
+    border: #cdcdcd medium solid;
+    border-radius: 8px;
+    min-width: 320px;
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .type, .startAt, {        
+        text-align: center;
+    }
+    button {
+        border: 0;
+        background: inherit;
+        border-style: outset;
+        padding: 1;
+    }
+    button:hover{
+        background: inherit;
+        color:#b54527;
+    }
+}
+
+.adminSpeakertRow {
+    margin-top: 5px;
+    border: #cdcdcd medium solid;
+    border-radius: 8px;
+    min-width: 320px;
+    animation: fadein 0.6s;
+        span {
+        margin-top: 4px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    button {
+        border: 0;
+        border-style: outset;
+        background: inherit;
+        padding: 1;
+    }
+    button:hover{
+        background: inherit;
+        color:#b54527;
+    }
+    
+}
+
+.adminEventRow:hover {
+    background-color: #dbc1a0;
+    cursor: pointer;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
